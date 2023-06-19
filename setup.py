@@ -93,7 +93,7 @@ def setup_package():
                     description=DESCRIPTION,
                     long_description=LONG_DESCRIPTION,
                     long_description_content_type='text/markdown',
-                    package_dir={'': ''},
+                    package_dir={'': '.'},
                     install_requires=INSTALL_REQUIRES,
                     setup_requires=['pytest-runner'],
                     tests_require=['pytest'],
