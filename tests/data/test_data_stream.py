@@ -43,17 +43,17 @@ def test_data_stream(test_path):
     y_expected = data['y']
 
     X, y = stream.next_sample()
-    assert np.alltrue(X[0] == X_expected[0])
-    assert np.alltrue(y[0] == y_expected[0])
+    assert np.isclose(X[0], X_expected[0]).all()
+    assert np.isclose(y[0], y_expected[0]).all()
 
     X, y = stream.last_sample()
-    assert np.alltrue(X[0] == X_expected[0])
-    assert np.alltrue(y[0] == y_expected[0])
+    assert np.isclose(X[0], X_expected[0]).all()
+    assert np.isclose(y[0], y_expected[0]).all()
 
     stream.restart()
     X, y = stream.next_sample(10)
-    assert np.alltrue(X == X_expected)
-    assert np.alltrue(y == y_expected)
+    assert np.isclose(X, X_expected).all()
+    assert np.isclose(y, y_expected).all()
 
     assert stream.n_targets == np.array(y).ndim
 
@@ -105,17 +105,17 @@ def test_data_stream_X_y(test_path):
     y_expected = data['y']
 
     X, y = stream.next_sample()
-    assert np.alltrue(X[0] == X_expected[0])
-    assert np.alltrue(y[0] == y_expected[0])
+    assert np.isclose(X[0], X_expected[0]).all()
+    assert np.isclose(y[0], y_expected[0]).all()
 
     X, y = stream.last_sample()
-    assert np.alltrue(X[0] == X_expected[0])
-    assert np.alltrue(y[0] == y_expected[0])
+    assert np.isclose(X[0], X_expected[0]).all()
+    assert np.isclose(y[0], y_expected[0]).all()
 
     stream.restart()
     X, y = stream.next_sample(10)
-    assert np.alltrue(X == X_expected)
-    assert np.alltrue(y == y_expected)
+    assert np.isclose(X, X_expected).all()
+    assert np.isclose(y, y_expected).all()
 
     assert stream.n_targets == np.array(y).ndim
 

@@ -34,7 +34,7 @@ DOWNLOAD_URL = 'https://pypi.org/project/scikit-multiflow/#files'
 LICENSE = '3-Clause BSD'
 
 # get __version__ from _version.py
-ver_file = os.path.join('src/skmultiflow', '_version.py')
+ver_file = os.path.join('skmultiflow', '_version.py')
 with open(ver_file) as f:
     exec(f.read())
 VERSION = __version__  # noqa
@@ -68,7 +68,7 @@ def configuration(parent_package='', top_path=None):
                        delegate_options_to_subpackages=True,
                        quiet=True)
 
-    config.add_subpackage('skmultiflow', subpackage_path='src/skmultiflow')
+    config.add_subpackage('skmultiflow', subpackage_path='skmultiflow')
 
     return config
 
@@ -93,7 +93,7 @@ def setup_package():
                     description=DESCRIPTION,
                     long_description=LONG_DESCRIPTION,
                     long_description_content_type='text/markdown',
-                    package_dir={'': 'src'},
+                    package_dir={'': ''},
                     install_requires=INSTALL_REQUIRES,
                     setup_requires=['pytest-runner'],
                     tests_require=['pytest'],

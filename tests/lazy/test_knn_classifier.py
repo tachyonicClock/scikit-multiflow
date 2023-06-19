@@ -1,7 +1,28 @@
 from array import array
+
+from sklearn.neighbors import KNeighborsClassifier
 from skmultiflow.lazy import KNNClassifier
 from skmultiflow.data import SEAGenerator
 import numpy as np
+
+
+def test_knn_offline():
+    # Random data
+    X = np.random.rand(100, 2)
+    y = np.random.randint(2, size=100)
+
+    # KNN
+    learner = KNNClassifier(n_neighbors=3, max_window_size=2000)
+    learner.fit(X, y)
+
+    learner_b = KNeighborsClassifier(n_neighbors=3)
+    learner_b.fit(X, y)
+    # Predict
+    y_pred = learner.predict(X)
+    y_pred_b = learner_b.predict(X)
+
+    # Check
+    assert np.alltrue(y_pred == y_pred_b)
 
 
 def test_knn():

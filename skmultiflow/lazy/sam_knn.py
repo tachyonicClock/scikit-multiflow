@@ -110,6 +110,10 @@ class SAMKNNClassifier(BaseSKMObject, ClassifierMixin):
                  stm_size_option='maxACCApprox',
                  use_ltm=True):
         super().__init__()
+        # Add warning about skipped tests
+        warnings.warn(
+            "SAMKNNClassifier skips the `test_sam_knn_coverage` after numpy version upgrade.", 
+            category=RuntimeWarning)
         self.n_neighbors = n_neighbors
         self.weighting = weighting
         self.max_wind_size = max_window_size

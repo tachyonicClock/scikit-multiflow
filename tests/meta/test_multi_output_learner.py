@@ -122,7 +122,7 @@ def test_multi_output_learner_regressor():
                                  n_targets=2,
                                  random_state=1)
 
-    estimator = SGDRegressor(random_state=112, tol=1e-3, max_iter=10, loss='squared_loss')
+    estimator = SGDRegressor(random_state=112, tol=1e-3, max_iter=10, loss='squared_error')
     learner = MultiOutputLearner(base_estimator=estimator)
 
     X, y = stream.next_sample(150)
