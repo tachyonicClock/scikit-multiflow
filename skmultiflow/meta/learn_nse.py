@@ -7,20 +7,31 @@ from skmultiflow.core import BaseSKMObject, ClassifierMixin, MetaEstimatorMixin
 import warnings
 
 
-def LearnNSE(base_estimator=DecisionTreeClassifier(), window_size=250, slope=0.5,
-             crossing_point=10, n_estimators=15, pruning=None):  # pragma: no cover
-    warnings.warn("'LearnNSE' has been renamed to 'LearnPPNSEClassifier' in v0.5.0.\n"
-                  "The old name will be removed in v0.7.0", category=FutureWarning)
-    return LearnPPNSEClassifier(base_estimator=base_estimator,
-                                window_size=window_size,
-                                slope=slope,
-                                crossing_point=crossing_point,
-                                n_estimators=n_estimators,
-                                pruning=pruning)
+def LearnNSE(
+    base_estimator=DecisionTreeClassifier(),
+    window_size=250,
+    slope=0.5,
+    crossing_point=10,
+    n_estimators=15,
+    pruning=None,
+):  # pragma: no cover
+    warnings.warn(
+        "'LearnNSE' has been renamed to 'LearnPPNSEClassifier' in v0.5.0.\n"
+        "The old name will be removed in v0.7.0",
+        category=FutureWarning,
+    )
+    return LearnPPNSEClassifier(
+        base_estimator=base_estimator,
+        window_size=window_size,
+        slope=slope,
+        crossing_point=crossing_point,
+        n_estimators=n_estimators,
+        pruning=pruning,
+    )
 
 
 class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
-    """ Learn++.NSE ensemble classifier.
+    """Learn++.NSE ensemble classifier.
 
     Learn++.NSE [1]_ is an ensemble of classifiers for incremental learning
     from non-stationary environments (NSEs) where the underlying data
@@ -87,13 +98,15 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
     >>> print('Learn++.NSE classifier accuracy: {}'.format(correct_cnt / n_samples))
     """
 
-    def __init__(self,
-                 base_estimator=DecisionTreeClassifier(),
-                 window_size=250,
-                 slope=0.5,
-                 crossing_point=10,
-                 n_estimators=15,
-                 pruning=None):
+    def __init__(
+        self,
+        base_estimator=DecisionTreeClassifier(),
+        window_size=250,
+        slope=0.5,
+        crossing_point=10,
+        n_estimators=15,
+        pruning=None,
+    ):
         super().__init__()
         self.ensemble = []
         self.ensemble_weights = []
@@ -157,7 +170,9 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
         N, _ = X.shape
         if self.classes is None:
             if classes is None:
-                raise RuntimeError("Should pass the classes in the first partial_fit call")
+                raise RuntimeError(
+                    "Should pass the classes in the first partial_fit call"
+                )
             else:
                 self.classes = classes
 
@@ -188,13 +203,17 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
                         self.instance_weights = self.instance_weights / sum_weights
 
                     # Train base classifier with Dt
-                    self._train_model(classifier, self.X_batch, self.y_batch, classes=self.classes)
+                    self._train_model(
+                        classifier, self.X_batch, self.y_batch, classes=self.classes
+                    )
 
                 else:
                     # First run! train the classifier on the instances with the same weight
                     self.instance_weights = np.ones(mt) / mt
 
-                    self._train_model(classifier, self.X_batch, self.y_batch, classes=self.classes)
+                    self._train_model(
+                        classifier, self.X_batch, self.y_batch, classes=self.classes
+                    )
 
                 self.ensemble.append(classifier)
                 self.bkts.append([])
@@ -214,7 +233,8 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
                         # Generate a new classifier
                         classifier = cp.deepcopy(self.base_estimator)
                         self._train_model(
-                            classifier, self.X_batch, self.y_batch, classes=self.classes)
+                            classifier, self.X_batch, self.y_batch, classes=self.classes
+                        )
                         self.ensemble[k - 1] = classifier
                     elif ekt > 0.5:
                         ekt = 0.5
@@ -233,7 +253,9 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
                     nbkts.append(bkt)
 
                     # compute the weighted normalized errors for kth classifier h_k
-                    wkt = 1.0 / (1.0 + np.exp(-self.slope * (t - k - self.crossing_point)))
+                    wkt = 1.0 / (
+                        1.0 + np.exp(-self.slope * (t - k - self.crossing_point))
+                    )
                     weights = self.wkts[k - 1]
                     weights.append(wkt / (np.sum(weights) + wkt))
 
@@ -244,13 +266,13 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
 
                 # Ensemble pruning
 
-                if self.pruning == 'age' and t > self.n_estimators:
+                if self.pruning == "age" and t > self.n_estimators:
                     # Age-based
                     self.ensemble.pop(0)
                     self.ensemble_weights.pop(0)
                     self.bkts.pop(0)
                     self.wkts.pop(0)
-                elif self.pruning == 'error' and t > self.n_estimators:
+                elif self.pruning == "error" and t > self.n_estimators:
                     # Error-based
                     self.ensemble.pop(error_index - 1)
                     self.ensemble_weights.pop(error_index - 1)
@@ -270,42 +292,43 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
                 if self.ensemble_weights[i] > 0:
                     h = self.ensemble[i]
                     y_predicts = h.predict_proba(X[m].reshape(1, -1))
-                    y_predicts /= np.linalg.norm(y_predicts, ord=1, axis=1, keepdims=True)
+                    y_predicts /= np.linalg.norm(
+                        y_predicts, ord=1, axis=1, keepdims=True
+                    )
                     try:
                         votes += self.ensemble_weights[i] * y_predicts
                     except ValueError:
-                        if hasattr(h, 'classes_'):  # sklearn learner
+                        if hasattr(h, "classes_"):  # sklearn learner
                             obs_classes = h.classes_
-                        elif hasattr(h, 'classes'):  # skmultiflow learner
+                        elif hasattr(h, "classes"):  # skmultiflow learner
                             obs_classes = h.classes
                         else:
                             raise AttributeError(
-                                'The base estimator does not define the "classes" or "classes_" ' +
-                                'parameter. The base estimator must specify the classes it has ' +
-                                'observed during the training stage in order to maintain ' +
-                                'consistency across the ensemble.'
+                                'The base estimator does not define the "classes" or "classes_" '
+                                + "parameter. The base estimator must specify the classes it has "
+                                + "observed during the training stage in order to maintain "
+                                + "consistency across the ensemble."
                             )
-                        votes += self.ensemble_weights[i] * \
-                            self._fill_missing_probs(
-                                y_predicts, obs_classes, self.classes
+                        votes += self.ensemble_weights[i] * self._fill_missing_probs(
+                            y_predicts, obs_classes, self.classes
                         )
 
             res.append(votes.reshape(len(classes)))
         return np.array(res)
 
     def _fill_missing_probs(self, probs, obs_classes, all_classes):
-        proba_ordered = np.zeros(
-            (probs.shape[0], all_classes.size), dtype=np.float
-        )
+        proba_ordered = np.zeros((probs.shape[0], all_classes.size), dtype=float)
         sorted_classes = np.argsort(all_classes)
         # Find positions to insert existing classes' probs to the complete set
         # of classes
-        idx = sorted_classes[np.searchsorted(all_classes, obs_classes, sorter=sorted_classes)]
+        idx = sorted_classes[
+            np.searchsorted(all_classes, obs_classes, sorter=sorted_classes)
+        ]
         proba_ordered[:, idx] = probs
         return proba_ordered
 
     def predict_proba(self, X):
-        """ Predicts the probability of each sample belonging to each one of the
+        """Predicts the probability of each sample belonging to each one of the
         known classes.
 
         Parameters
@@ -328,7 +351,7 @@ class LearnPPNSEClassifier(BaseSKMObject, ClassifierMixin, MetaEstimatorMixin):
         return self.__vote_proba(X, len(self.ensemble), self.classes)
 
     def predict(self, X):
-        """ Predicts the class for a given sample by majority vote from all
+        """Predicts the class for a given sample by majority vote from all
         the members of the ensemble.
 
         Parameters

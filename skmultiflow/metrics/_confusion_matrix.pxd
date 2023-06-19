@@ -1,4 +1,5 @@
 # See _confusion_matrix.pyx for implementation details.
+# distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION
 
 cdef class ConfusionMatrix:
     # This confusion matrix is a 2D matrix of shape ``(n_classes, n_classes)``, corresponding

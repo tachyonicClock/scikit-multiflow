@@ -7,17 +7,19 @@ from skmultiflow.lazy.base_neighbors import BaseNeighbors
 from skmultiflow.utils.utils import get_dimensions
 
 
-def KNN(n_neighbors=5, max_window_size=1000,
-        leaf_size=30):     # pragma: no cover
-    warnings.warn("'KNN' has been renamed to 'KNNClassifier' in v0.5.0.\n"
-                  "The old name will be removed in v0.7.0", category=FutureWarning)
-    return KNNClassifier(n_neighbors=n_neighbors,
-                         max_window_size=max_window_size,
-                         leaf_size=leaf_size)
+def KNN(n_neighbors=5, max_window_size=1000, leaf_size=30):  # pragma: no cover
+    warnings.warn(
+        "'KNN' has been renamed to 'KNNClassifier' in v0.5.0.\n"
+        "The old name will be removed in v0.7.0",
+        category=FutureWarning,
+    )
+    return KNNClassifier(
+        n_neighbors=n_neighbors, max_window_size=max_window_size, leaf_size=leaf_size
+    )
 
 
 class KNNClassifier(BaseNeighbors, ClassifierMixin):
-    """ k-Nearest Neighbors classifier.
+    """k-Nearest Neighbors classifier.
 
     This non-parametric classification method keeps track of the last
     ``max_window_size`` training samples. The predicted class-label for a
@@ -81,19 +83,19 @@ class KNNClassifier(BaseNeighbors, ClassifierMixin):
 
     """
 
-    def __init__(self,
-                 n_neighbors=5,
-                 max_window_size=1000,
-                 leaf_size=30,
-                 metric='euclidean'):
-        super().__init__(n_neighbors=n_neighbors,
-                         max_window_size=max_window_size,
-                         leaf_size=leaf_size,
-                         metric=metric)
+    def __init__(
+        self, n_neighbors=5, max_window_size=1000, leaf_size=30, metric="euclidean"
+    ):
+        super().__init__(
+            n_neighbors=n_neighbors,
+            max_window_size=max_window_size,
+            leaf_size=leaf_size,
+            metric=metric,
+        )
         self.classes = []
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
-        """ Partially (incrementally) fit the model.
+        """Partially (incrementally) fit the model.
 
         Parameters
         ----------
@@ -133,7 +135,7 @@ class KNNClassifier(BaseNeighbors, ClassifierMixin):
         return self
 
     def predict(self, X):
-        """ Predict the class label for sample X
+        """Predict the class label for sample X
 
         Parameters
         ----------
@@ -152,7 +154,7 @@ class KNNClassifier(BaseNeighbors, ClassifierMixin):
         return y_pred
 
     def predict_proba(self, X):
-        """ Estimate the probability of X belonging to each class-labels.
+        """Estimate the probability of X belonging to each class-labels.
 
         Parameters
         ----------
@@ -173,14 +175,19 @@ class KNNClassifier(BaseNeighbors, ClassifierMixin):
             return np.zeros(shape=(r, 1))
         proba = []
 
-        self.classes = list(set().union(self.classes,
-                                        np.unique(self.data_window.targets_buffer.astype(np.int))))
+        self.classes = list(
+            set().union(
+                self.classes, np.unique(self.data_window.targets_buffer.astype(int))
+            )
+        )
 
         new_dist, new_ind = self._get_neighbors(X)
         for i in range(r):
             votes = [0.0 for _ in range(int(max(self.classes) + 1))]
             for index in new_ind[i]:
-                votes[int(self.data_window.targets_buffer[index])] += 1. / len(new_ind[i])
+                votes[int(self.data_window.targets_buffer[index])] += 1.0 / len(
+                    new_ind[i]
+                )
             proba.append(votes)
 
         return np.asarray(proba)

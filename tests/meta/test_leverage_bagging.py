@@ -77,7 +77,7 @@ def test_leverage_bagging_me():
                              0, 0, 0, 1, 0, 0, 1, 1, 0, 0,
                              1, 0, 0, 0, 1, 1, 0, 1, 0, 1,
                              0, 0, 0, 1, 1, 0, 1, 1, 1, 0,
-                             1, 0, 1, 0, 0, 1, 1, 0, 1, 0], dtype=np.int)
+                             1, 0, 1, 0, 0, 1, 1, 0, 1, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40,
                                y_expected=y_expected)
@@ -100,7 +100,7 @@ def test_leverage_bagging_half():
                              1, 0, 0, 0, 1, 0, 1, 1, 1, 1,
                              1, 1, 1, 1, 0, 1, 0, 1, 1, 0,
                              0, 0, 1, 1, 1, 0, 1, 1, 0, 0,
-                             1, 0, 0, 1, 0, 0, 0, 1, 1, 0], dtype=np.int)
+                             1, 0, 0, 1, 0, 0, 0, 1, 1, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40,
                                y_expected=y_expected)
@@ -124,7 +124,7 @@ def test_leverage_bagging_wt():
                              1, 0, 0, 0, 1, 0, 1, 1, 1, 1,
                              1, 1, 1, 1, 0, 1, 0, 1, 1, 0,
                              0, 0, 1, 1, 1, 0, 1, 1, 0, 0,
-                             1, 0, 0, 0, 0, 0, 0, 1, 0, 0], dtype=np.int)
+                             1, 0, 0, 0, 0, 0, 0, 1, 0, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40,
                                y_expected=y_expected)
@@ -148,7 +148,7 @@ def test_leverage_bagging_subag():
                              1, 1, 0, 0, 1, 0, 1, 1, 1, 1,
                              1, 1, 1, 1, 0, 1, 0, 1, 1, 0,
                              0, 0, 1, 1, 1, 0, 1, 1, 0, 0,
-                             1, 0, 0, 1, 0, 0, 0, 1, 1, 0], dtype=np.int)
+                             1, 0, 0, 1, 0, 0, 0, 1, 1, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40,
                                y_expected=y_expected)
@@ -170,7 +170,7 @@ def test_leverage_bagging_code_matrix():
                              2, 4, 2, 2, 0, 0, 2, 4, 2, 4,
                              0, 4, 2, 4, 2, 4, 0, 4, 1, 3,
                              2, 1, 2, 4, 2, 4, 1, 3, 0, 4,
-                             2, 0, 0, 4, 3, 2, 4, 4, 2, 4], dtype=np.int)
+                             2, 0, 0, 4, 3, 2, 4, 4, 2, 4], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40,
                                y_expected=y_expected)
@@ -205,8 +205,8 @@ def test_leverage_bagging_coverage():
 def run_prequential_supervised(stream, learner, max_samples, n_wait, y_expected=None):
     stream.restart()
 
-    y_pred = np.zeros(max_samples // n_wait, dtype=np.int)
-    y_true = np.zeros(max_samples // n_wait, dtype=np.int)
+    y_pred = np.zeros(max_samples // n_wait, dtype=int)
+    y_true = np.zeros(max_samples // n_wait, dtype=int)
     j = 0
 
     for i in range(max_samples):

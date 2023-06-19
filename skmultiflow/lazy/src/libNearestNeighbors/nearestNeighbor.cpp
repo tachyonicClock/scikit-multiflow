@@ -1,3 +1,4 @@
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "Python.h"
 #include "numpy/arrayobject.h"
 #include <vector>
@@ -128,22 +129,22 @@ static PyObject *py_getNToNDistances(PyObject *self, PyObject *args) {
 
 	PyArrayObject *matSampleData;
 	matSampleData = (PyArrayObject *) PyArray_ContiguousFromObject(sampleData,
-			PyArray_DOUBLE, 1, 2);
-	double *carrSampleData = (double*) (matSampleData->data);
-	npy_intp sampleDataRows = matSampleData->dimensions[0];
-	npy_intp sampleDataCols = matSampleData->dimensions[1];
+			NPY_DOUBLE, 1, 2);
+	double *carrSampleData = (double*) PyArray_DATA(matSampleData);
+	npy_intp sampleDataRows = PyArray_DIM(matSampleData, 0);
+	npy_intp sampleDataCols = PyArray_DIM(matSampleData, 1);
 
-	if (matSampleData->nd == 1) {
+	if (PyArray_NDIM(matSampleData) == 1) {
 		sampleDataCols = sampleDataRows;
 		sampleDataRows = 1;
 	}
 	PyArrayObject *matSampleData2;
 	matSampleData2 = (PyArrayObject *) PyArray_ContiguousFromObject(sampleData2,
-			PyArray_DOUBLE, 1, 2);
-	double *carrSampleData2 = (double*) (matSampleData2->data);
-	npy_intp sampleData2Rows = matSampleData2->dimensions[0];
+			NPY_DOUBLE, 1, 2);
+	double *carrSampleData2 = (double*) PyArray_DATA(matSampleData2);
+	npy_intp sampleData2Rows = PyArray_DIM(matSampleData2, 0);
 
-	if (matSampleData2->nd == 1) {
+	if (PyArray_NDIM(matSampleData2) == 1) {
 		sampleData2Rows = 1;
 	}
 	npy_intp Dims[2];
@@ -151,12 +152,12 @@ static PyObject *py_getNToNDistances(PyObject *self, PyObject *args) {
 	Dims[1] = sampleData2Rows;
 
 	PyArrayObject *distances = (PyArrayObject *) PyArray_SimpleNew(2,
-			Dims, PyArray_DOUBLE);
+			Dims, NPY_DOUBLE);
 	PyArrayObject *matDistances;
 	matDistances = (PyArrayObject *) PyArray_ContiguousFromObject(
-			(PyObject* )distances, PyArray_DOUBLE, 1, 2);
+			(PyObject* )distances, NPY_DOUBLE, 1, 2);
 
-	double *carrDistances = (double*) (matDistances->data);
+	double *carrDistances = (double*) PyArray_DATA(matDistances);
 
 	getNToNDistances(carrSampleData, carrSampleData2, carrDistances, sampleDataRows, sampleData2Rows, sampleDataCols);
 
@@ -182,32 +183,32 @@ static PyObject *py_get1ToNDistances(PyObject *self, PyObject *args) {
 
 	PyArrayObject *matSampleData;
 	matSampleData = (PyArrayObject *) PyArray_ContiguousFromObject(sampleData,
-			PyArray_DOUBLE, 1, 1);
-	double *carrSampleData = (double*) (matSampleData->data);
-	npy_intp sampleDataRows = matSampleData->dimensions[0];
-	npy_intp sampleDataCols = matSampleData->dimensions[1];
+			NPY_DOUBLE, 1, 1);
+	double *carrSampleData = (double*) PyArray_DATA(matSampleData);
+	npy_intp sampleDataRows = PyArray_DIM(matSampleData, 0);
+	npy_intp sampleDataCols = PyArray_DIM(matSampleData, 1);
 
-	if (matSampleData->nd == 1) {
+	if (PyArray_NDIM(matSampleData) == 1) {
 		sampleDataCols = sampleDataRows;
 		sampleDataRows = 1;
 	}
 
 	PyArrayObject *matSamplesData;
 	matSamplesData = (PyArrayObject *) PyArray_ContiguousFromObject(samplesData,
-			PyArray_DOUBLE, 1, 2);
-	double *carrSamplesData = (double*) (matSamplesData->data);
-	npy_intp samplesDataRows = matSamplesData->dimensions[0];
+			NPY_DOUBLE, 1, 2);
+	double *carrSamplesData = (double*) PyArray_DATA(matSamplesData);
+	npy_intp samplesDataRows = PyArray_DIM(matSamplesData, 0);
 
-	if (matSamplesData->nd == 1) {
+	if (PyArray_NDIM(matSamplesData) == 1) {
 		samplesDataRows = 1;
 	}
 
 	PyArrayObject *distances = (PyArrayObject *) PyArray_SimpleNew(1,
-			&samplesDataRows, PyArray_DOUBLE);
+			&samplesDataRows, NPY_DOUBLE);
 	PyArrayObject *matDistances;
 	matDistances = (PyArrayObject *) PyArray_ContiguousFromObject(
-			(PyObject* )distances, PyArray_DOUBLE, 1, 1);
-	double *carrDistances = (double*) (matDistances->data);
+			(PyObject* )distances, NPY_DOUBLE, 1, 1);
+	double *carrDistances = (double*) PyArray_DATA(matDistances);
 	get1ToNDistances(carrSampleData, carrSamplesData, carrDistances, samplesDataRows, sampleDataCols);
 	Py_DECREF(matSampleData);
 	Py_DECREF(matSamplesData);
@@ -229,12 +230,12 @@ static PyObject *py_nArgMin(PyObject *self, PyObject *args) {
 	//create c-arrays:
 	PyArrayObject *matValues;
 	matValues = (PyArrayObject *) PyArray_ContiguousFromObject(values,
-			PyArray_DOUBLE, 1, 2);
-	double *carrValues = (double*) (matValues->data);
-	npy_intp numRows = matValues->dimensions[0];
-	npy_intp numValues = matValues->dimensions[1];
+			NPY_DOUBLE, 1, 2);
+	double *carrValues = (double*) PyArray_DATA(matValues);
+	npy_intp numRows = PyArray_DIM(matValues, 0);
+	npy_intp numValues = PyArray_DIM(matValues, 1);
 
-	if (matValues->nd == 1) {
+	if (PyArray_NDIM(matValues) == 1) {
 		numValues = numRows;
 		numRows = 1;
 	}
@@ -243,11 +244,11 @@ static PyObject *py_nArgMin(PyObject *self, PyObject *args) {
 	Dims[1] = n;
 
 	PyArrayObject *indices = (PyArrayObject *) PyArray_SimpleNew(2,
-			Dims, PyArray_INT);
+			Dims, NPY_INT);
 	PyArrayObject *matIndices;
 	matIndices = (PyArrayObject *) PyArray_ContiguousFromObject(
-			(PyObject* )indices, PyArray_INT, 1, 2);
-	int *carrIndices = (int*) (matIndices->data);
+			(PyObject* )indices, NPY_INT, 1, 2);
+	int *carrIndices = (int*) PyArray_DATA(matIndices);
 	nArgMinN(n, carrValues, carrIndices, numRows, numValues);
 	Py_DECREF(matValues);
 	PyObject *result = Py_BuildValue("O", matIndices);
@@ -267,21 +268,21 @@ static PyObject *py_mostCommon(PyObject *self, PyObject *args) {
 	//create c-arrays:
 	PyArrayObject *matValues;
 	matValues = (PyArrayObject *) PyArray_ContiguousFromObject(values,
-			PyArray_INT, 1, 2);
-	int *carrValues = (int*) (matValues->data);
-	npy_intp numRows = matValues->dimensions[0];
-	npy_intp numValues = matValues->dimensions[1];
+			NPY_INT, 1, 2);
+	int *carrValues = (int*) PyArray_DATA(matValues);
+	npy_intp numRows = PyArray_DIM(matValues, 0);
+	npy_intp numValues = PyArray_DIM(matValues, 1); 
 
-	if (matValues->nd == 1) {
+	if (PyArray_NDIM(matValues) == 1) {
 		numValues = numRows;
 		numRows = 1;
 	}
 	PyArrayObject *indices = (PyArrayObject *) PyArray_SimpleNew(1,
-			&numRows, PyArray_INT);
+			&numRows, NPY_INT);
 	PyArrayObject *matIndices;
 	matIndices = (PyArrayObject *) PyArray_ContiguousFromObject(
-			(PyObject* )indices, PyArray_INT, 1, 1);
-	int *carrIndices = (int*) (matIndices->data);
+			(PyObject* )indices, NPY_INT, 1, 1);
+	int *carrIndices = (int*) PyArray_DATA(matIndices);
 	mostCommonN(carrValues, carrIndices, numRows, numValues);
 	Py_DECREF(matValues);
 	PyObject *result = Py_BuildValue("O", matIndices);
@@ -300,26 +301,26 @@ static PyObject *py_getLinearWeightedLabels(PyObject *self, PyObject *args) {
 	//create c-arrays:
 	PyArrayObject *matLabels;
 	matLabels = (PyArrayObject *) PyArray_ContiguousFromObject(labels,
-			PyArray_INT, 1, 2);
-	int *carrLabels = (int*) (matLabels->data);
-	npy_intp numRows = matLabels->dimensions[0];
-	npy_intp numValues = matLabels->dimensions[1];
+			NPY_INT, 1, 2);
+	int *carrLabels = (int*) PyArray_DATA(matLabels);
+	npy_intp numRows = PyArray_DIM(matLabels, 0);
+	npy_intp numValues = PyArray_DIM(matLabels, 1);
 
-	if (matLabels->nd == 1) {
+	if (PyArray_NDIM(matLabels) == 1) {
 		numValues = numRows;
 		numRows = 1;
 	}
 	PyArrayObject *matDistances;
 	matDistances = (PyArrayObject *) PyArray_ContiguousFromObject(distances,
-			PyArray_DOUBLE, 1, 2);
-	double *carrDistances = (double*) (matDistances->data);
+			NPY_DOUBLE, 1, 2);
+	double *carrDistances = (double*) PyArray_DATA(matDistances);
 
 	PyArrayObject *resultLabels = (PyArrayObject *) PyArray_SimpleNew(1,
-			&numRows, PyArray_INT);
+			&numRows, NPY_INT);
 	PyArrayObject *matResultLabels;
 	matResultLabels = (PyArrayObject *) PyArray_ContiguousFromObject(
-			(PyObject* )resultLabels, PyArray_INT, 1, 1);
-	int *carrResultLabels = (int*) (matResultLabels->data);
+			(PyObject* )resultLabels, NPY_INT, 1, 1);
+	int *carrResultLabels = (int*) PyArray_DATA(matResultLabels);
 	linearWeightedLabelsN(carrLabels, carrDistances, carrResultLabels, numRows, numValues);
 	Py_DECREF(matLabels);
 	Py_DECREF(matDistances);

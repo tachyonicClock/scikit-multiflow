@@ -7,7 +7,7 @@ from skmultiflow.data.base_stream import Stream
 
 
 class DataStream(Stream):
-    """ Creates a stream from a data source.
+    """Creates a stream from a data source.
 
     DataStream takes the whole data set containing the `X` (features) and `Y` (targets)
     or takes `X` and `Y` separately. For the first case `target_idx` and `n_targets` need to
@@ -43,12 +43,20 @@ class DataStream(Stream):
 
     """
 
-    _CLASSIFICATION = 'classification'
-    _REGRESSION = 'regression'
+    _CLASSIFICATION = "classification"
+    _REGRESSION = "regression"
     _Y_is_defined = False
 
-    def __init__(self, data, y=None, target_idx=-1, n_targets=1, cat_features=None, name=None,
-                 allow_nan=False):
+    def __init__(
+        self,
+        data,
+        y=None,
+        target_idx=-1,
+        n_targets=1,
+        cat_features=None,
+        name=None,
+        allow_nan=False,
+    ):
         super().__init__()
         self.X = None
         self.y = y
@@ -99,11 +107,16 @@ class DataStream(Stream):
         """
         if y is not None and not self._Y_is_defined:
             self._Y_is_defined = True
-        if not self._Y_is_defined or (isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)):
+        if not self._Y_is_defined or (
+            isinstance(y, np.ndarray) or isinstance(y, pd.DataFrame)
+        ):
             self._y = y
         else:
             raise ValueError(
-                "np.ndarray or pd.DataFrame y object expected, and {} was passed".format(type(y)))
+                "np.ndarray or pd.DataFrame y object expected, and {} was passed".format(
+                    type(y)
+                )
+            )
 
     @property
     def X(self):
@@ -128,12 +141,19 @@ class DataStream(Stream):
             the features' columns.
         """
 
-        if isinstance(X, np.ndarray) or isinstance(X, pd.DataFrame) or not self._Y_is_defined:
+        if (
+            isinstance(X, np.ndarray)
+            or isinstance(X, pd.DataFrame)
+            or not self._Y_is_defined
+        ):
             self._X = X
 
         else:
             raise ValueError(
-                "np.ndarray or pd.DataFrame X object expected, and {} was passed".format(type(X)))
+                "np.ndarray or pd.DataFrame X object expected, and {} was passed".format(
+                    type(X)
+                )
+            )
 
     @property
     def data(self):
@@ -169,7 +189,7 @@ class DataStream(Stream):
     @data.deleter
     def data(self):
         """
-            Deletes data
+        Deletes data
         """
         del self._data
 
@@ -258,7 +278,6 @@ class DataStream(Stream):
             self._is_ready = True
 
     def _load_X_y(self):
-
         self.y = pd.DataFrame(self.y)
 
         check_data_consistency(self.y, self.allow_nan)
@@ -275,9 +294,12 @@ class DataStream(Stream):
             if max(self.cat_features_idx) < self.n_features:
                 self.n_cat_features = len(self.cat_features_idx)
             else:
-                raise IndexError('Categorical feature index in {} '
-                                 'exceeds n_features {}'.format(self.cat_features_idx,
-                                                                self.n_features))
+                raise IndexError(
+                    "Categorical feature index in {} "
+                    "exceeds n_features {}".format(
+                        self.cat_features_idx, self.n_features
+                    )
+                )
         self.n_num_features = self.n_features - self.n_cat_features
 
         if np.issubdtype(self.y.dtype, np.integer):
@@ -289,33 +311,45 @@ class DataStream(Stream):
         self.target_values = self._get_target_values()
 
     def _load_data(self):
-
         check_data_consistency(self.data, self.allow_nan)
 
         rows, cols = self.data.shape
         self.n_samples = rows
         labels = self.data.columns.values.tolist()
 
-        if (self.target_idx + self.n_targets) == cols or (self.target_idx + self.n_targets) == 0:
+        if (self.target_idx + self.n_targets) == cols or (
+            self.target_idx + self.n_targets
+        ) == 0:
             # Take everything to the right of target_idx
-            self.y = self.data.iloc[:, self.target_idx:].values
-            self.target_names = self.data.iloc[:, self.target_idx:].columns.values.tolist()
+            self.y = self.data.iloc[:, self.target_idx :].values
+            self.target_names = self.data.iloc[
+                :, self.target_idx :
+            ].columns.values.tolist()
         else:
             # Take only n_targets columns to the right of target_idx, use the rest as features
-            self.y = self.data.iloc[:, self.target_idx:self.target_idx + self.n_targets].values
-            self.target_names = labels[self.target_idx:self.target_idx + self.n_targets]
+            self.y = self.data.iloc[
+                :, self.target_idx : self.target_idx + self.n_targets
+            ].values
+            self.target_names = labels[
+                self.target_idx : self.target_idx + self.n_targets
+            ]
 
         self.X = self.data.drop(self.target_names, axis=1).values
-        self.feature_names = self.data.drop(self.target_names, axis=1).columns.values.tolist()
+        self.feature_names = self.data.drop(
+            self.target_names, axis=1
+        ).columns.values.tolist()
 
         _, self.n_features = self.X.shape
         if self.cat_features_idx:
             if max(self.cat_features_idx) < self.n_features:
                 self.n_cat_features = len(self.cat_features_idx)
             else:
-                raise IndexError('Categorical feature index in {} '
-                                 'exceeds n_features {}'.format(self.cat_features_idx,
-                                                                self.n_features))
+                raise IndexError(
+                    "Categorical feature index in {} "
+                    "exceeds n_features {}".format(
+                        self.cat_features_idx, self.n_features
+                    )
+                )
         self.n_num_features = self.n_features - self.n_cat_features
 
         if np.issubdtype(self.y.dtype, np.integer):
@@ -327,7 +361,7 @@ class DataStream(Stream):
         self.target_values = self._get_target_values()
 
     def restart(self):
-        """ Restarts the stream.
+        """Restarts the stream.
 
         It basically server the purpose of reinitializing the stream to
         its initial state.
@@ -338,7 +372,7 @@ class DataStream(Stream):
         self.current_sample_y = None
 
     def next_sample(self, batch_size=1):
-        """ Returns next sample from the stream.
+        """Returns next sample from the stream.
 
         If there is enough instances to supply at least batch_size samples, those
         are returned. If there aren't a tuple of (None, None) is returned.
@@ -357,9 +391,12 @@ class DataStream(Stream):
         """
         self.sample_idx += batch_size
         try:
-
-            self.current_sample_x = self.X[self.sample_idx - batch_size:self.sample_idx, :]
-            self.current_sample_y = self.y[self.sample_idx - batch_size:self.sample_idx, :]
+            self.current_sample_x = self.X[
+                self.sample_idx - batch_size : self.sample_idx, :
+            ]
+            self.current_sample_y = self.y[
+                self.sample_idx - batch_size : self.sample_idx, :
+            ]
             if self.n_targets < 2:
                 self.current_sample_y = self.current_sample_y.flatten()
 
@@ -369,7 +406,7 @@ class DataStream(Stream):
         return self.current_sample_x, self.current_sample_y
 
     def has_more_samples(self):
-        """ Checks if stream has more samples.
+        """Checks if stream has more samples.
 
         Returns
         -------
@@ -380,7 +417,7 @@ class DataStream(Stream):
         return (self.n_samples - self.sample_idx) > 0
 
     def n_remaining_samples(self):
-        """ Returns the estimated number of remaining samples.
+        """Returns the estimated number of remaining samples.
 
         Returns
         -------
@@ -401,12 +438,14 @@ class DataStream(Stream):
     def get_data_info(self):
         name = self.name + ": " if self.name else ""
         if self.task_type == self._CLASSIFICATION:
-            return "{}{} target(s), {} classes".format(name, self.n_targets, self.n_classes)
+            return "{}{} target(s), {} classes".format(
+                name, self.n_targets, self.n_classes
+            )
         elif self.task_type == self._REGRESSION:
             return "{}{} target(s)".format(name, self.n_targets)
 
     def _get_target_values(self):
-        if self.task_type == 'classification':
+        if self.task_type == "classification":
             if self.n_targets == 1:
                 return np.unique(self.y).tolist()
             else:
@@ -415,9 +454,14 @@ class DataStream(Stream):
             return [float] * self.n_targets
 
     def get_info(self):
-        return 'DataStream(n_targets={}, target_idx={}, cat_features={}, name={})'. \
-            format(self.target_idx, self.n_targets, self.cat_features,
-                   self.name if not self.name else "'" + self.name + "'")
+        return (
+            "DataStream(n_targets={}, target_idx={}, cat_features={}, name={})".format(
+                self.target_idx,
+                self.n_targets,
+                self.cat_features,
+                self.name if not self.name else "'" + self.name + "'",
+            )
+        )
 
 
 def check_data_consistency(raw_data_frame, allow_nan=False):
@@ -436,16 +480,22 @@ def check_data_consistency(raw_data_frame, allow_nan=False):
         If True, allows NaN values in the data. Otherwise, an error is raised.
 
     """
-    if (raw_data_frame.dtypes == 'object').values.any():
+    if (raw_data_frame.dtypes == "object").values.any():
         # scikit-multiflow assumes that data is numeric
-        raise ValueError('Non-numeric data found:\n {}'
-                         'scikit-multiflow only supports numeric data.'
-                         .format(raw_data_frame.dtypes))
+        raise ValueError(
+            "Non-numeric data found:\n {}"
+            "scikit-multiflow only supports numeric data.".format(raw_data_frame.dtypes)
+        )
 
     if raw_data_frame.isnull().values.any():
         if not allow_nan:
-            raise ValueError("NaN values found. Missing values are not fully supported.\n"
-                             "You can deactivate this error via the 'allow_nan' option.")
+            raise ValueError(
+                "NaN values found. Missing values are not fully supported.\n"
+                "You can deactivate this error via the 'allow_nan' option."
+            )
         else:
-            warnings.warn("NaN values found. Functionality is not guaranteed for some methods."
-                          "Proceed with caution.", UserWarning)
+            warnings.warn(
+                "NaN values found. Functionality is not guaranteed for some methods."
+                "Proceed with caution.",
+                UserWarning,
+            )

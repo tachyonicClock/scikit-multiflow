@@ -1,6 +1,7 @@
+# distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION
 cimport cython
 import numpy as np
-cimport numpy as np
+cimport numpy as cnp
 import scipy as sp
 import warnings
 from cpython cimport bool
@@ -8,8 +9,8 @@ from collections import deque
 
 from ._confusion_matrix import ConfusionMatrix, MultiLabelConfusionMatrix
 
-DTYPE = np.float
-ctypedef np.float_t DTYPE_t
+DTYPE = np.float32
+ctypedef cnp.float32_t DTYPE_t
 
 
 cdef class ClassificationPerformanceEvaluator:

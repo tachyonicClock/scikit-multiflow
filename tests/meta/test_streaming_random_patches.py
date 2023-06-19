@@ -18,7 +18,7 @@ def test_srp_randompatches():
                              0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
                              0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
                              1, 1, 0, 0, 0, 1, 0, 1, 1, 0,
-                             1, 1, 1, 0, 0, 0, 1, 0, 1, 0], dtype=np.int)
+                             1, 1, 1, 0, 0, 0, 1, 0, 1, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40, y_expected=y_expected)
 
@@ -35,7 +35,7 @@ def test_srp_randomsubspaces():
                              0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
                              0, 0, 1, 0, 0, 1, 1, 0, 1, 0,
                              1, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-                             0, 0, 1, 0, 0, 0, 0, 0, 0, 0], dtype=np.int)
+                             0, 0, 1, 0, 0, 0, 0, 0, 0, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40, y_expected=y_expected)
 
@@ -51,7 +51,7 @@ def test_srp_resampling():
                              0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
                              0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
                              1, 1, 0, 1, 1, 1, 0, 1, 1, 0,
-                             1, 1, 1, 0, 0, 0, 1, 0, 1, 0], dtype=np.int)
+                             1, 1, 1, 0, 0, 0, 1, 0, 1, 0], dtype=int)
 
     run_prequential_supervised(stream, learner, max_samples=2000, n_wait=40, y_expected=y_expected)
 
@@ -102,8 +102,8 @@ def test_srp_coverage():
 def run_prequential_supervised(stream, learner, max_samples, n_wait, y_expected=None):
     stream.restart()
 
-    y_pred = np.zeros(max_samples // n_wait, dtype=np.int)
-    y_true = np.zeros(max_samples // n_wait, dtype=np.int)
+    y_pred = np.zeros(max_samples // n_wait, dtype=int)
+    y_true = np.zeros(max_samples // n_wait, dtype=int)
     j = 0
 
     for i in range(max_samples):
