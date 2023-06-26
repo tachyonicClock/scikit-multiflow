@@ -1,10 +1,10 @@
 import os
 
-from skmultiflow.lazy import KNNADWINClassifier
-from skmultiflow.core import Pipeline
-from skmultiflow.data import DataStream
-from skmultiflow.evaluation import EvaluatePrequential
-from skmultiflow.transform import OneHotToCategorical
+from skmfforever.lazy import KNNADWINClassifier
+from skmfforever.core import Pipeline
+from skmfforever.data import DataStream
+from skmfforever.evaluation import EvaluatePrequential
+from skmfforever.transform import OneHotToCategorical
 
 import numpy as np
 

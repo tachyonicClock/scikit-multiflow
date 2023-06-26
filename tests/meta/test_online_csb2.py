@@ -1,6 +1,6 @@
-from skmultiflow.meta import OnlineCSB2Classifier
-from skmultiflow.bayes import NaiveBayes
-from skmultiflow.data import SEAGenerator
+from skmfforever.meta import OnlineCSB2Classifier
+from skmfforever.bayes import NaiveBayes
+from skmfforever.data import SEAGenerator
 import numpy as np
 
 

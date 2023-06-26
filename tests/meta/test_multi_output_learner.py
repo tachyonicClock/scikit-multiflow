@@ -3,9 +3,9 @@ from sklearn.metrics import mean_absolute_error
 from sklearn import __version__ as sklearn_version
 from sklearn import set_config
 
-from skmultiflow.meta.multi_output_learner import MultiOutputLearner
-from skmultiflow.data import MultilabelGenerator, RegressionGenerator
-from skmultiflow.metrics.measure_collection import hamming_score
+from skmfforever.meta.multi_output_learner import MultiOutputLearner
+from skmfforever.data import MultilabelGenerator, RegressionGenerator
+from skmfforever.metrics.measure_collection import hamming_score
 
 import numpy as np
 

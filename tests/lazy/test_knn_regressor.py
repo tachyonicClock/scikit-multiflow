@@ -1,7 +1,7 @@
 from array import array
 
-from skmultiflow.lazy import KNNRegressor
-from skmultiflow.data import RegressionGenerator
+from skmfforever.lazy import KNNRegressor
+from skmfforever.data import RegressionGenerator
 
 from sklearn.metrics import mean_squared_error
 

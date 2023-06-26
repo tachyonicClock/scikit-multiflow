@@ -4,8 +4,8 @@ from sklearn.linear_model import SGDClassifier
 from sklearn import __version__ as sklearn_version
 from sklearn import set_config
 
-from skmultiflow.data import MultilabelGenerator, make_logical
-from skmultiflow.meta import ClassifierChain, MonteCarloClassifierChain, \
+from skmfforever.data import MultilabelGenerator, make_logical
+from skmfforever.meta import ClassifierChain, MonteCarloClassifierChain, \
     ProbabilisticClassifierChain
 
 import numpy as np

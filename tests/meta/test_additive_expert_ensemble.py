@@ -1,6 +1,6 @@
-from skmultiflow.meta import AdditiveExpertEnsembleClassifier
-from skmultiflow.data import SEAGenerator
-from skmultiflow.bayes import NaiveBayes
+from skmfforever.meta import AdditiveExpertEnsembleClassifier
+from skmfforever.data import SEAGenerator
+from skmfforever.bayes import NaiveBayes
 import numpy as np
 
 

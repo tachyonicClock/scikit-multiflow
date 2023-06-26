@@ -1,8 +1,8 @@
 import numpy as np
 from array import array
-from skmultiflow.data import SEAGenerator
-from skmultiflow.prototype import RobustSoftLearningVectorQuantization as RSLVQ
-from skmultiflow.core.base import is_classifier
+from skmfforever.data import SEAGenerator
+from skmfforever.prototype import RobustSoftLearningVectorQuantization as RSLVQ
+from skmfforever.core.base import is_classifier
 
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)

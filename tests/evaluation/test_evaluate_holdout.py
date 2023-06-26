@@ -2,9 +2,9 @@ import os
 import filecmp
 import difflib
 import numpy as np
-from skmultiflow.data import RandomTreeGenerator
-from skmultiflow.trees import HoeffdingTreeClassifier
-from skmultiflow.evaluation import EvaluateHoldout
+from skmfforever.data import RandomTreeGenerator
+from skmfforever.trees import HoeffdingTreeClassifier
+from skmfforever.evaluation import EvaluateHoldout
 
 
 def test_evaluate_holdout_classifier(tmpdir, test_path):

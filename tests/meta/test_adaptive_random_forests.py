@@ -1,7 +1,7 @@
 import numpy as np
 
-from skmultiflow.data import RandomTreeGenerator
-from skmultiflow.meta import AdaptiveRandomForestClassifier
+from skmfforever.data import RandomTreeGenerator
+from skmfforever.meta import AdaptiveRandomForestClassifier
 
 
 def test_adaptive_random_forests_mc():

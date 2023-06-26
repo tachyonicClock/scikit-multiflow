@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.stagger_generator import STAGGERGenerator
+from skmfforever.data.stagger_generator import STAGGERGenerator
 
 
 def test_stagger_generator(test_path):

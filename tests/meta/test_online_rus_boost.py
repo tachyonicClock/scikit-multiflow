@@ -1,6 +1,6 @@
-from skmultiflow.meta import OnlineRUSBoostClassifier
-from skmultiflow.bayes import NaiveBayes
-from skmultiflow.data import SEAGenerator
+from skmfforever.meta import OnlineRUSBoostClassifier
+from skmfforever.bayes import NaiveBayes
+from skmfforever.data import SEAGenerator
 import numpy as np
 
 

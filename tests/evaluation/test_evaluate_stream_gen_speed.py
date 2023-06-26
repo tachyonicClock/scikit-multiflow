@@ -1,5 +1,5 @@
-from skmultiflow.data import SEAGenerator
-from skmultiflow.evaluation.evaluate_stream_gen_speed import EvaluateStreamGenerationSpeed
+from skmfforever.data import SEAGenerator
+from skmfforever.evaluation.evaluate_stream_gen_speed import EvaluateStreamGenerationSpeed
 
 
 def test_evaluate_stream_gen_speed():

@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from copy import copy
-from skmultiflow.transform.missing_values_cleaner import MissingValuesCleaner
+from skmfforever.transform.missing_values_cleaner import MissingValuesCleaner
 
 
 def test_missing_values_cleaner(test_path):

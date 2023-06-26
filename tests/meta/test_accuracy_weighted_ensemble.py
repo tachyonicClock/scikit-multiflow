@@ -1,6 +1,6 @@
-from skmultiflow.data.hyper_plane_generator import HyperplaneGenerator
-from skmultiflow.meta import AccuracyWeightedEnsembleClassifier
-from skmultiflow.bayes import NaiveBayes
+from skmfforever.data.hyper_plane_generator import HyperplaneGenerator
+from skmfforever.meta import AccuracyWeightedEnsembleClassifier
+from skmfforever.bayes import NaiveBayes
 import numpy as np
 from array import array
 

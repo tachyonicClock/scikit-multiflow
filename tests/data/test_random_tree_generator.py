@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.random_tree_generator import RandomTreeGenerator
+from skmfforever.data.random_tree_generator import RandomTreeGenerator
 
 
 def test_random_tree_generator(test_path):

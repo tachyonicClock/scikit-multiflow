@@ -19,22 +19,18 @@ import setuptools    # Actually used, do not remove
 # Python import machinery.
 builtins.__SKMULTIFLOW_SETUP__ = True
 
-DIST_NAME = 'scikit-multiflow'
-DESCRIPTION = 'A machine learning package for streaming data in Python.'
-MAINTAINER = 'Jacob Montiel'
-MAINTAINER_EMAIL = 'jacob.montiel@waikato.ac.nz'
-URL = 'https://scikit-multiflow.github.io/'
+DIST_NAME = 'skmfforever'
+DESCRIPTION = 'Keeping scikit-multiflow alive for a little longer..'
+MAINTAINER = ''
+MAINTAINER_EMAIL = ''
+URL = ''
 PROJECT_URLS = {
-    'Documentation': 'https://scikit-multiflow.github.io/scikit-multiflow/',
-    'Source code': 'https://github.com/scikit-multiflow/scikit-multiflow',
-    'Bug Tracker': 'https://github.com/scikit-multiflow/scikit-multiflow/issues',
-    'Azure Pipelines': 'https://dev.azure.com/scikit-multiflow/scikit-multiflow',
 }
-DOWNLOAD_URL = 'https://pypi.org/project/scikit-multiflow/#files'
+DOWNLOAD_URL = ''
 LICENSE = '3-Clause BSD'
 
 # get __version__ from _version.py
-ver_file = os.path.join('skmultiflow', '_version.py')
+ver_file = os.path.join('skmfforever', '_version.py')
 with open(ver_file) as f:
     exec(f.read())
 VERSION = __version__  # noqa
@@ -68,7 +64,7 @@ def configuration(parent_package='', top_path=None):
                        delegate_options_to_subpackages=True,
                        quiet=True)
 
-    config.add_subpackage('skmultiflow', subpackage_path='skmultiflow')
+    config.add_subpackage('skmfforever', subpackage_path='skmfforever')
 
     return config
 

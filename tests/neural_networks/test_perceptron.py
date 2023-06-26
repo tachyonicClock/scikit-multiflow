@@ -3,8 +3,8 @@ import numpy as np
 from array import array
 import os
 
-from skmultiflow.data import SEAGenerator
-from skmultiflow.neural_networks import PerceptronMask
+from skmfforever.data import SEAGenerator
+from skmfforever.neural_networks import PerceptronMask
 from sklearn.metrics import accuracy_score
 
 import pytest

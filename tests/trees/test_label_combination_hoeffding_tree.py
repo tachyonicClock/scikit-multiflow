@@ -1,7 +1,7 @@
 import numpy as np
-from skmultiflow.trees import LabelCombinationHoeffdingTreeClassifier
-from skmultiflow.data import MultilabelGenerator
-from skmultiflow.utils import calculate_object_size
+from skmfforever.trees import LabelCombinationHoeffdingTreeClassifier
+from skmfforever.data import MultilabelGenerator
+from skmfforever.utils import calculate_object_size
 
 
 def test_label_combination_hoeffding_tree_mc(test_path):

@@ -1,6 +1,6 @@
-from skmultiflow.meta import DynamicWeightedMajorityClassifier
-from skmultiflow.data import SEAGenerator
-from skmultiflow.bayes import NaiveBayes
+from skmfforever.meta import DynamicWeightedMajorityClassifier
+from skmfforever.data import SEAGenerator
+from skmfforever.bayes import NaiveBayes
 import numpy as np
 
 

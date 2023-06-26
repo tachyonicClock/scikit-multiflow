@@ -2,7 +2,7 @@ import os
 import numpy as np
 import pytest
 
-from skmultiflow.data import ConceptDriftStream
+from skmfforever.data import ConceptDriftStream
 
 
 def test_concept_drift_stream(test_path):

@@ -1,7 +1,7 @@
 from sklearn.datasets import make_regression
-from skmultiflow.data import DataStream
+from skmfforever.data import DataStream
 
-from skmultiflow.meta import RegressorChain
+from skmfforever.meta import RegressorChain
 from sklearn.linear_model import SGDRegressor
 from sklearn import set_config
 

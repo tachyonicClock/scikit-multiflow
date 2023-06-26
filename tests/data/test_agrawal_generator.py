@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.agrawal_generator import AGRAWALGenerator
+from skmfforever.data.agrawal_generator import AGRAWALGenerator
 
 
 def test_agrawal_generator(test_path):

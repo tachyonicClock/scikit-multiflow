@@ -1,6 +1,6 @@
-from skmultiflow.data import SEAGenerator
-from skmultiflow.data import ConceptDriftStream
-from skmultiflow.drift_detection import KSWIN
+from skmfforever.data import SEAGenerator
+from skmfforever.data import ConceptDriftStream
+from skmfforever.drift_detection import KSWIN
 import numpy as np
 import pytest
 import os

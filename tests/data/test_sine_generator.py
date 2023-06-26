@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.sine_generator import SineGenerator
+from skmfforever.data.sine_generator import SineGenerator
 
 
 def test_sine_generator(test_path):

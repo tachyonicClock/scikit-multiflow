@@ -1,5 +1,5 @@
-from skmultiflow.data import RandomTreeGenerator
-from skmultiflow.meta.learn_pp import LearnPPClassifier
+from skmfforever.data import RandomTreeGenerator
+from skmfforever.meta.learn_pp import LearnPPClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import set_config
 import numpy as np

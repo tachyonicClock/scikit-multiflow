@@ -2,8 +2,8 @@ import os
 import numpy as np
 from array import array
 from sklearn.metrics import mean_absolute_error
-from skmultiflow.data import RegressionGenerator
-from skmultiflow.trees import HoeffdingAdaptiveTreeRegressor
+from skmfforever.data import RegressionGenerator
+from skmfforever.trees import HoeffdingAdaptiveTreeRegressor
 from difflib import SequenceMatcher
 
 

@@ -1,6 +1,6 @@
-from skmultiflow.meta import OnlineUnderOverBaggingClassifier
-from skmultiflow.bayes import NaiveBayes
-from skmultiflow.data import SEAGenerator
+from skmfforever.meta import OnlineUnderOverBaggingClassifier
+from skmfforever.bayes import NaiveBayes
+from skmfforever.data import SEAGenerator
 import numpy as np
 
 

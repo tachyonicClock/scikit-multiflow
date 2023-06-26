@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.waveform_generator import WaveformGenerator
+from skmfforever.data.waveform_generator import WaveformGenerator
 
 
 def test_waveform_generator(test_path):

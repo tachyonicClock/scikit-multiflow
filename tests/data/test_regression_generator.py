@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.regression_generator import RegressionGenerator
+from skmfforever.data.regression_generator import RegressionGenerator
 
 
 def test_regression_generator(test_path):

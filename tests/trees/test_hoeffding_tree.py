@@ -1,9 +1,9 @@
 import numpy as np
 from array import array
 import os
-from skmultiflow.data import RandomTreeGenerator, SEAGenerator
-from skmultiflow.trees import HoeffdingTreeClassifier
-from skmultiflow.utils import calculate_object_size
+from skmfforever.data import RandomTreeGenerator, SEAGenerator
+from skmfforever.trees import HoeffdingTreeClassifier
+from skmfforever.utils import calculate_object_size
 
 
 def test_hoeffding_tree_nb(test_path):

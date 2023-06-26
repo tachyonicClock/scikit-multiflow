@@ -2,9 +2,9 @@ import os
 import numpy as np
 from array import array
 from sklearn.metrics import mean_absolute_error
-from skmultiflow.data import RegressionGenerator
-from skmultiflow.trees import HoeffdingTreeRegressor
-from skmultiflow.utils import calculate_object_size
+from skmfforever.data import RegressionGenerator
+from skmfforever.trees import HoeffdingTreeRegressor
+from skmfforever.utils import calculate_object_size
 from difflib import SequenceMatcher
 
 

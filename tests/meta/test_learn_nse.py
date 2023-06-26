@@ -6,9 +6,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import set_config
 
 
-from skmultiflow.data import SEAGenerator, RandomTreeGenerator
-from skmultiflow.meta import LearnPPNSEClassifier
-from skmultiflow.trees import HoeffdingTreeClassifier
+from skmfforever.data import SEAGenerator, RandomTreeGenerator
+from skmfforever.meta import LearnPPNSEClassifier
+from skmfforever.trees import HoeffdingTreeClassifier
 
 # Force sklearn to show only the parameters whose default value have been changed when
 # printing an estimator (backwards compatibility with versions prior to sklearn==0.23)

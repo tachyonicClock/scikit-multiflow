@@ -5,7 +5,7 @@ import datetime
 import random
 import pytest
 
-from skmultiflow.data.temporal_data_stream import TemporalDataStream
+from skmfforever.data.temporal_data_stream import TemporalDataStream
 
 
 def test_temporal_data_stream(test_path):

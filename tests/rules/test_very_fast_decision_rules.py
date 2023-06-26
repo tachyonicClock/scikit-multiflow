@@ -1,5 +1,5 @@
-from skmultiflow.rules import VeryFastDecisionRulesClassifier
-from skmultiflow.data import AGRAWALGenerator
+from skmfforever.rules import VeryFastDecisionRulesClassifier
+from skmfforever.data import AGRAWALGenerator
 import numpy as np
 from array import array
 import sys

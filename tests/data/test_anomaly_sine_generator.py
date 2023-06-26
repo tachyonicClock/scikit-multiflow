@@ -4,7 +4,7 @@ import pytest
 
 import numpy as np
 
-from skmultiflow.data import AnomalySineGenerator
+from skmfforever.data import AnomalySineGenerator
 
 
 def test_anomaly_sine_generator(test_path):

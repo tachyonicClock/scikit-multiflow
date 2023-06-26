@@ -1,14 +1,14 @@
 import numpy as np
 import time
-from skmultiflow.metrics import ClassificationMeasurements
-from skmultiflow.metrics import WindowClassificationMeasurements
-from skmultiflow.metrics import MultiTargetClassificationMeasurements
-from skmultiflow.metrics import WindowMultiTargetClassificationMeasurements
-from skmultiflow.metrics import RegressionMeasurements
-from skmultiflow.metrics import WindowRegressionMeasurements
-from skmultiflow.metrics import MultiTargetRegressionMeasurements
-from skmultiflow.metrics import WindowMultiTargetRegressionMeasurements
-from skmultiflow.metrics import RunningTimeMeasurements
+from skmfforever.metrics import ClassificationMeasurements
+from skmfforever.metrics import WindowClassificationMeasurements
+from skmfforever.metrics import MultiTargetClassificationMeasurements
+from skmfforever.metrics import WindowMultiTargetClassificationMeasurements
+from skmfforever.metrics import RegressionMeasurements
+from skmfforever.metrics import WindowRegressionMeasurements
+from skmfforever.metrics import MultiTargetRegressionMeasurements
+from skmfforever.metrics import WindowMultiTargetRegressionMeasurements
+from skmfforever.metrics import RunningTimeMeasurements
 
 
 def test_classification_measurements():

@@ -1,9 +1,9 @@
 import numpy as np
 
-from skmultiflow.metrics import ClassificationPerformanceEvaluator
-from skmultiflow.metrics import WindowClassificationPerformanceEvaluator
-from skmultiflow.metrics import MultiLabelClassificationPerformanceEvaluator
-from skmultiflow.metrics import WindowMultiLabelClassificationPerformanceEvaluator
+from skmfforever.metrics import ClassificationPerformanceEvaluator
+from skmfforever.metrics import WindowClassificationPerformanceEvaluator
+from skmfforever.metrics import MultiLabelClassificationPerformanceEvaluator
+from skmfforever.metrics import WindowMultiLabelClassificationPerformanceEvaluator
 
 
 def test_binary_classification():

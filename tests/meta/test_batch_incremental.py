@@ -1,5 +1,5 @@
-from skmultiflow.data import RandomTreeGenerator
-from skmultiflow.meta.batch_incremental import BatchIncrementalClassifier
+from skmfforever.data import RandomTreeGenerator
+from skmfforever.meta.batch_incremental import BatchIncrementalClassifier
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import set_config

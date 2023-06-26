@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.file_stream import FileStream
+from skmfforever.data.file_stream import FileStream
 
 
 def test_file_stream(test_path):

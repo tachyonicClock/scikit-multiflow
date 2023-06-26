@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.led_generator_drift import LEDGeneratorDrift
+from skmfforever.data.led_generator_drift import LEDGeneratorDrift
 
 
 def test_led_generator_drift(test_path):

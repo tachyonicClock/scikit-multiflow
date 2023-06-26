@@ -1,6 +1,6 @@
-from skmultiflow.data import WaveformGenerator
-from skmultiflow.trees.hoeffding_tree import HoeffdingTreeClassifier
-from skmultiflow.evaluation.evaluate_prequential import EvaluatePrequential
+from skmfforever.data import WaveformGenerator
+from skmfforever.trees.hoeffding_tree import HoeffdingTreeClassifier
+from skmfforever.evaluation.evaluate_prequential import EvaluatePrequential
 
 # Create a stream
 stream = WaveformGenerator()

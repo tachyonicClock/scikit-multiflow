@@ -2,7 +2,7 @@ import os
 import filecmp
 import difflib
 from shutil import copyfile
-from skmultiflow.utils.file_scripts import RemoveHeader, clean_header
+from skmfforever.utils.file_scripts import RemoveHeader, clean_header
 
 
 def test_clean_header(tmpdir, test_path):

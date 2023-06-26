@@ -1,14 +1,14 @@
 from array import array
 
-from skmultiflow.core import clone
-from skmultiflow.core.base import _pprint
-from skmultiflow.data import SEAGenerator
-from skmultiflow.bayes import NaiveBayes
-from skmultiflow.trees import HoeffdingTreeClassifier
-from skmultiflow.trees import HoeffdingTreeRegressor
-from skmultiflow.trees import iSOUPTreeRegressor
-from skmultiflow.core import is_classifier
-from skmultiflow.core import is_regressor
+from skmfforever.core import clone
+from skmfforever.core.base import _pprint
+from skmfforever.data import SEAGenerator
+from skmfforever.bayes import NaiveBayes
+from skmfforever.trees import HoeffdingTreeClassifier
+from skmfforever.trees import HoeffdingTreeRegressor
+from skmfforever.trees import iSOUPTreeRegressor
+from skmfforever.core import is_classifier
+from skmfforever.core import is_regressor
 
 
 def test_clone():

@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.multilabel_generator import MultilabelGenerator
+from skmfforever.data.multilabel_generator import MultilabelGenerator
 
 
 def test_multilabel_generator(test_path):

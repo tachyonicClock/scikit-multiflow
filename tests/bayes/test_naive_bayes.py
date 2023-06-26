@@ -1,9 +1,9 @@
 import numpy as np
 from array import array
 import os
-from skmultiflow.data import SEAGenerator
-from skmultiflow.bayes import NaiveBayes
-from skmultiflow.core.base import is_classifier
+from skmfforever.data import SEAGenerator
+from skmfforever.bayes import NaiveBayes
+from skmfforever.core.base import is_classifier
 
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)

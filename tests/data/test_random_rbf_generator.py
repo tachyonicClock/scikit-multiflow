@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.random_rbf_generator import RandomRBFGenerator
+from skmfforever.data.random_rbf_generator import RandomRBFGenerator
 
 
 def test_random_rbf_generator(test_path):

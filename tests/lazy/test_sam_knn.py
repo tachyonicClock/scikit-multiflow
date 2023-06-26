@@ -4,8 +4,8 @@ import numpy as np
 
 import pytest
 
-from skmultiflow.lazy import SAMKNNClassifier
-from skmultiflow.data import SEAGenerator
+from skmfforever.lazy import SAMKNNClassifier
+from skmfforever.data import SEAGenerator
 
 
 def test_sam_knn():

@@ -1,5 +1,5 @@
-from skmultiflow.data import ConceptDriftStream
-from skmultiflow.meta import StreamingRandomPatchesClassifier
+from skmfforever.data import ConceptDriftStream
+from skmfforever.meta import StreamingRandomPatchesClassifier
 
 import numpy as np
 

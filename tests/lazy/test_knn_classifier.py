@@ -1,8 +1,8 @@
 from array import array
 
 from sklearn.neighbors import KNeighborsClassifier
-from skmultiflow.lazy import KNNClassifier
-from skmultiflow.data import SEAGenerator
+from skmfforever.lazy import KNNClassifier
+from skmfforever.data import SEAGenerator
 import numpy as np
 
 

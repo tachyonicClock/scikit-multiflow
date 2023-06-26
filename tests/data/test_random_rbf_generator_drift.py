@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.random_rbf_generator_drift import RandomRBFGeneratorDrift
+from skmfforever.data.random_rbf_generator_drift import RandomRBFGeneratorDrift
 
 
 def test_random_rbf_generator_drift(test_path):

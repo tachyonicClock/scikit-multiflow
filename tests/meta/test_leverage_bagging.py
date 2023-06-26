@@ -1,7 +1,7 @@
-from skmultiflow.meta import LeveragingBaggingClassifier
-from skmultiflow.lazy import KNNClassifier
-from skmultiflow.data import SEAGenerator, RandomTreeGenerator, ConceptDriftStream
-from skmultiflow.bayes import NaiveBayes
+from skmfforever.meta import LeveragingBaggingClassifier
+from skmfforever.lazy import KNNClassifier
+from skmfforever.data import SEAGenerator, RandomTreeGenerator, ConceptDriftStream
+from skmfforever.bayes import NaiveBayes
 
 import numpy as np
 import pytest

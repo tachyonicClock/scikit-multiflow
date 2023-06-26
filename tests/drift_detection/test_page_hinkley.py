@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.drift_detection import PageHinkley
+from skmfforever.drift_detection import PageHinkley
 
 
 def test_page_hinkley(test_path):

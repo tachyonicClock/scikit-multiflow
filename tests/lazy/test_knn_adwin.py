@@ -1,6 +1,6 @@
 from array import array
-from skmultiflow.lazy import KNNADWINClassifier
-from skmultiflow.data import ConceptDriftStream, SEAGenerator
+from skmfforever.lazy import KNNADWINClassifier
+from skmfforever.data import ConceptDriftStream, SEAGenerator
 import numpy as np
 
 

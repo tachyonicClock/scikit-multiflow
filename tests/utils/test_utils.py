@@ -4,11 +4,11 @@ from copy import copy
 import numpy as np
 import pytest
 
-from skmultiflow.utils.utils import get_dimensions
-from skmultiflow.utils.utils import get_max_value_key
-from skmultiflow.utils.utils import normalize_values_in_dict
-from skmultiflow.utils.utils import calculate_object_size
-from skmultiflow.utils.utils import add_dict_values
+from skmfforever.utils.utils import get_dimensions
+from skmfforever.utils.utils import get_max_value_key
+from skmfforever.utils.utils import normalize_values_in_dict
+from skmfforever.utils.utils import calculate_object_size
+from skmfforever.utils.utils import add_dict_values
 
 
 def test_get_dimensions():

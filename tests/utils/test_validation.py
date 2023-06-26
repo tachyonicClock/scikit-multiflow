@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from skmultiflow.utils import check_random_state
-from skmultiflow.utils import check_weights
+from skmfforever.utils import check_random_state
+from skmfforever.utils import check_weights
 
 
 def test_check_random_state():

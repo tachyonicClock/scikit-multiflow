@@ -4,7 +4,7 @@ import pandas as pd
 
 import pytest   # noqa
 
-from skmultiflow.data.data_stream import DataStream
+from skmfforever.data.data_stream import DataStream
 
 
 def test_data_stream(test_path):

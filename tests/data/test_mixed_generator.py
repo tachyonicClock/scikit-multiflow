@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.mixed_generator import MIXEDGenerator
+from skmfforever.data.mixed_generator import MIXEDGenerator
 
 
 def test_mixed_generator(test_path):

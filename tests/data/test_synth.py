@@ -1,5 +1,5 @@
 import numpy as np
-from skmultiflow.data import make_logical
+from skmfforever.data import make_logical
 
 
 def test_make_logical():

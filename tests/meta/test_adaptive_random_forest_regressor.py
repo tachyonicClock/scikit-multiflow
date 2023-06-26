@@ -1,8 +1,8 @@
 import numpy as np
 from array import array
 from sklearn.metrics import mean_absolute_error
-from skmultiflow.data import RegressionGenerator
-from skmultiflow.meta import AdaptiveRandomForestRegressor
+from skmfforever.data import RegressionGenerator
+from skmfforever.meta import AdaptiveRandomForestRegressor
 
 
 def test_adaptive_random_forest_regressor_mean():

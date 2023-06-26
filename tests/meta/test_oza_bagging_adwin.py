@@ -1,6 +1,6 @@
-from skmultiflow.meta import OzaBaggingADWINClassifier
-from skmultiflow.lazy import KNNClassifier
-from skmultiflow.data import SEAGenerator
+from skmfforever.meta import OzaBaggingADWINClassifier
+from skmfforever.lazy import KNNClassifier
+from skmfforever.data import SEAGenerator
 
 import numpy as np
 

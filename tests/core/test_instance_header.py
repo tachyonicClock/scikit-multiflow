@@ -1,4 +1,4 @@
-from skmultiflow.core.instance_header import InstanceHeader
+from skmfforever.core.instance_header import InstanceHeader
 
 
 def test_instance_header():

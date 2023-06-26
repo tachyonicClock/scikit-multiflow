@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.sea_generator import SEAGenerator
+from skmfforever.data.sea_generator import SEAGenerator
 
 
 def test_sea_generator(test_path):

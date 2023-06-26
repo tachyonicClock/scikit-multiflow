@@ -1,6 +1,6 @@
 import numpy as np
 
-from skmultiflow.drift_detection import DDM
+from skmfforever.drift_detection import DDM
 
 
 def test_ddm():

@@ -2,9 +2,9 @@ import os
 import filecmp
 import difflib
 import numpy as np
-from skmultiflow.data import RandomTreeGenerator
-from skmultiflow.trees import HoeffdingTreeClassifier
-from skmultiflow.evaluation import EvaluatePrequential
+from skmfforever.data import RandomTreeGenerator
+from skmfforever.trees import HoeffdingTreeClassifier
+from skmfforever.evaluation import EvaluatePrequential
 
 
 def test_evaluate_prequential_classifier(tmpdir, test_path):
@@ -92,8 +92,8 @@ def test_evaluate_classification_coverage(tmpdir):
 
 def test_evaluate_regression_coverage(tmpdir):
     # A simple coverage test. Tests for metrics are placed in the corresponding test module.
-    from skmultiflow.data import RegressionGenerator
-    from skmultiflow.trees import HoeffdingTreeRegressor
+    from skmfforever.data import RegressionGenerator
+    from skmfforever.trees import HoeffdingTreeRegressor
 
     max_samples = 1000
 
@@ -114,8 +114,8 @@ def test_evaluate_regression_coverage(tmpdir):
 
 def test_evaluate_multi_target_classification_coverage(tmpdir):
     # A simple coverage test. Tests for metrics are placed in the corresponding test module.
-    from skmultiflow.data import MultilabelGenerator
-    from skmultiflow.meta import MultiOutputLearner
+    from skmfforever.data import MultilabelGenerator
+    from skmfforever.meta import MultiOutputLearner
 
     max_samples = 1000
 
@@ -135,8 +135,8 @@ def test_evaluate_multi_target_classification_coverage(tmpdir):
 
 
 def test_evaluate_multi_target_regression_coverage(tmpdir):
-    from skmultiflow.data import RegressionGenerator
-    from skmultiflow.trees import iSOUPTreeRegressor
+    from skmfforever.data import RegressionGenerator
+    from skmfforever.trees import iSOUPTreeRegressor
 
     max_samples = 1000
 
@@ -158,8 +158,8 @@ def test_evaluate_multi_target_regression_coverage(tmpdir):
 
 
 def test_evaluate_coverage(tmpdir):
-    from skmultiflow.data import SEAGenerator
-    from skmultiflow.bayes import NaiveBayes
+    from skmfforever.data import SEAGenerator
+    from skmfforever.bayes import NaiveBayes
 
     max_samples = 1000
 

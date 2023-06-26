@@ -2,8 +2,8 @@ import pytest
 
 import sys
 
-from skmultiflow.utils._show_versions import _get_deps_info
-from skmultiflow.utils import show_versions
+from skmfforever.utils._show_versions import _get_deps_info
+from skmfforever.utils import show_versions
 
 
 def test_get_deps_info():

@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.led_generator import LEDGenerator
+from skmfforever.data.led_generator import LEDGenerator
 
 
 def test_led_generator(test_path):

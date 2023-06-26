@@ -3,8 +3,8 @@ from array import array
 
 import numpy as np
 
-from skmultiflow.anomaly_detection import HalfSpaceTrees
-from skmultiflow.data import SEAGenerator
+from skmfforever.anomaly_detection import HalfSpaceTrees
+from skmfforever.data import SEAGenerator
 
 
 def test_half_space_trees(test_path):

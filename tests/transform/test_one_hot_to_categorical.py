@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.transform.one_hot_to_categorical import OneHotToCategorical
+from skmfforever.transform.one_hot_to_categorical import OneHotToCategorical
 
 
 def test_one_hot_to_categorical(test_path):

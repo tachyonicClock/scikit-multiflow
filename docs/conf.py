@@ -15,7 +15,7 @@
 import os
 import sys
 from sphinx.domains.python import PythonDomain   # noqa
-from skmultiflow._version import __version__ as skmultiflow_version    # noqa
+from skmfforever._version import __version__ as skmultiflow_version    # noqa
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.

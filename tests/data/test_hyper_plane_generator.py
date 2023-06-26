@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from skmultiflow.data.hyper_plane_generator import HyperplaneGenerator
+from skmfforever.data.hyper_plane_generator import HyperplaneGenerator
 
 
 def test_hyper_plane_generator(test_path):

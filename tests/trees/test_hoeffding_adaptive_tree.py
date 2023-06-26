@@ -1,9 +1,9 @@
 import numpy as np
 from array import array
 import os
-from skmultiflow.data import ConceptDriftStream, SEAGenerator, HyperplaneGenerator, \
+from skmfforever.data import ConceptDriftStream, SEAGenerator, HyperplaneGenerator, \
     AGRAWALGenerator
-from skmultiflow.trees import HoeffdingAdaptiveTreeClassifier
+from skmfforever.trees import HoeffdingAdaptiveTreeClassifier
 
 
 def test_hoeffding_adaptive_tree_mc(test_path):
